@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard1.0</TargetFramework>
+        <LangVersion>10.0</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Authors>Manuel Riezebosch</Authors>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <PackageId>If</PackageId>
+        <Description>If extension method.</Description>
+        <PackageReleaseNotes></PackageReleaseNotes>
+        <PackageTags>if;condition;extension;builder;servicecollection;configuration</PackageTags>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/riezebosch/if.git</RepositoryUrl>
+        <Version>1.5.1</Version>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="" />
+    </ItemGroup>
+</Project>
