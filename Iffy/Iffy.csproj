@@ -9,15 +9,15 @@
     <PropertyGroup>
         <Authors>Manuel Riezebosch</Authors>
         <NeutralLanguage>en-US</NeutralLanguage>
-        <PackageId>If</PackageId>
+        <PackageId>Iffy</PackageId>
         <Description>If extension method.</Description>
         <PackageReleaseNotes></PackageReleaseNotes>
         <PackageTags>if;condition;extension;builder;servicecollection;configuration</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>https://github.com/riezebosch/if.git</RepositoryUrl>
-        <Version>1.5.1</Version>
+        <RepositoryUrl>https://github.com/riezebosch/iffy.git</RepositoryUrl>
+        <Version>1.5.2</Version>
     </PropertyGroup>
 
     <ItemGroup>
