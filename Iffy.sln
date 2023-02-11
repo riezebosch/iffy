@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iffy", "Iffy\Iffy.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iffy.Tests", "Iffy.Tests\Iffy.Tests.csproj", "{005A4384-DD44-4EB7-8CC2-EB6E0B7E0BD3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{210745CE-1AB2-4483-9D59-3044726106A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iffy.Examples.Rebus", "Examples\Iffy.Examples.Rebus\Iffy.Examples.Rebus.csproj", "{545CA03C-F6C6-47C7-92CC-EA369B9D0AD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,12 @@ Global
 		{005A4384-DD44-4EB7-8CC2-EB6E0B7E0BD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{005A4384-DD44-4EB7-8CC2-EB6E0B7E0BD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{005A4384-DD44-4EB7-8CC2-EB6E0B7E0BD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{545CA03C-F6C6-47C7-92CC-EA369B9D0AD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{545CA03C-F6C6-47C7-92CC-EA369B9D0AD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{545CA03C-F6C6-47C7-92CC-EA369B9D0AD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{545CA03C-F6C6-47C7-92CC-EA369B9D0AD3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{545CA03C-F6C6-47C7-92CC-EA369B9D0AD3} = {210745CE-1AB2-4483-9D59-3044726106A5}
 	EndGlobalSection
 EndGlobal
