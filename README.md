@@ -1,12 +1,16 @@
 # Iffy
 
-The one extension method you never knew you needed it that much.
+The one extension method you never knew you needed it that much: 
+
+> iffy, if-as-a-method
+
+Use conditions in fluent builder patterns, everywhere.
 
 ## if, then
 
 ```csharp
 new ServiceCollection()
-    .If(IsDevelopment(),  s => s.AddSingleton<Ext>())
+    .If(IsDevelopment(),  s => s.AddSingleton<...>())
     .BuildServiceProvider()
 ```
 
@@ -15,16 +19,17 @@ new ServiceCollection()
 ```csharp
 new ServiceCollection()
     .If(IsDevelopment(),  
-        s => s.AddSingleton<List<int>>(), 
-        s => s.AddSingleton<Ext>())
+        then => then.AddSingleton<...>(), 
+        @else => @else.AddSingleton<...>())
     .BuildServiceProvider()
 ```
+
 ## if().then()
 
 ```csharp
 new ServiceCollection()
     .If(IsDevelopment())
-    .Then(s => s.AddSingleton<List<int>>()) 
+    .Then(s => s.AddSingleton<...>()) 
     .Else()
     .BuildServiceProvider()
 ```
@@ -34,15 +39,12 @@ new ServiceCollection()
 ```csharp
 new ServiceCollection()
     .If(IsDevelopment())
-    .Then(s => s.AddSingleton<List<int>>()) 
-    .Else(s => s.AddSingleton<Ext>())
+    .Then(s => s.AddSingleton<...>()) 
+    .Else(s => s.AddSingleton<...>())
     .BuildServiceProvider()
 ```
 
-
-
-
-## with other builders
+## any other builder
 
 ```csharp
 new ServiceCollection()
@@ -54,9 +56,9 @@ new ServiceCollection()
                 .DoNotCreateQueues()
                 .DoNotCheckQueueConfiguration())
             .If(IsDevelopment(),
-                settings => settings
+                then => then
                     .SetAutoDeleteOnIdle(TimeSpan.FromMinutes(5)),
-                settings => settings
+                @else => @else
                     .DoNotCreateQueues()
                     .DoNotCheckQueueConfiguration())
             .If(IsDevelopment())
