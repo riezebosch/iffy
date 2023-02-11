@@ -4,65 +4,39 @@ namespace Iffy.Tests;
 
 public class Builder
 {
-    [Fact]
-    public void True()
-    {
-        var then = Substitute.For<Func<IServiceCollection, IServiceCollection>>();
-        var @else = Substitute.For<Func<IServiceCollection, IServiceCollection>>();
-        
-        new ServiceCollection()
-            .If(true)
-            .Then(then)
-            .Else(@else)
-            .BuildServiceProvider();
-        
-        then.Received().Invoke(Arg.Any<IServiceCollection>());
-        @else.Received(0).Invoke(Arg.Any<IServiceCollection>());
-    }
-
-    [Fact]
-    public void False()
-    {
-        var then = Substitute.For<Func<IServiceCollection, IServiceCollection>>();
-        var @else = Substitute.For<Func<IServiceCollection, IServiceCollection>>();
-        
-        new ServiceCollection()
-            .If(false)
-            .Then(then)
-            .Else(@else)
-            .BuildServiceProvider();
-        
-        then.Received(0).Invoke(Arg.Any<IServiceCollection>());
-        @else.Received(1).Invoke(Arg.Any<IServiceCollection>());
-    }
-
-    [Fact]
-    public void TrueThen()
+    [Theory]
+    [InlineData(true, 1)]
+    [InlineData(false, 0)]
+    public void IfThen(bool @if, int received)
     {
         var then = Substitute.For<Func<IServiceCollection, IServiceCollection>>();
         
         new ServiceCollection()
             .AddSingleton<List<int>>()
-            .If(true)
+            .If(@if)
             .Then(then)
             .Else()
             .BuildServiceProvider();
         
-        then.Received(1).Invoke(Arg.Any<IServiceCollection>());
+        then.Received(received).Invoke(Arg.Any<IServiceCollection>());
     }
-    
-    [Fact]
-    public void FalseThen()
+
+    [Theory]
+    [InlineData(true, 1, 0)]
+    [InlineData(false, 0, 1)]
+
+    public void IfThenElse(bool @if, int then_received, int else_received)
     {
         var then = Substitute.For<Func<IServiceCollection, IServiceCollection>>();
+        var @else = Substitute.For<Func<IServiceCollection, IServiceCollection>>();
         
         new ServiceCollection()
-            .AddSingleton<List<int>>()
-            .If(false)
+            .If(@if)
             .Then(then)
-            .Else()
+            .Else(@else)
             .BuildServiceProvider();
         
-        then.Received(0).Invoke(Arg.Any<IServiceCollection>());
+        then.Received(then_received).Invoke(Arg.Any<IServiceCollection>());
+        @else.Received(else_received).Invoke(Arg.Any<IServiceCollection>());
     }
 }

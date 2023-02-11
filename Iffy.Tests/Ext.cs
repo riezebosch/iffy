@@ -4,32 +4,34 @@ namespace Iffy.Tests;
 
 public class Ext
 {
-    [Fact]
-    public void True() =>
-        new ServiceCollection()
-            .If(true, s => s.AddSingleton<Ext>())
-            .BuildServiceProvider()
-            .GetService<Ext>()
-            .Should()
-            .NotBeNull();
+    [Theory]
+    [InlineData(true, 1)]
+    [InlineData(false, 0)]
+    public void IfThen(bool @if, int received)
+    {
+        var then = Substitute.For<Func<IServiceCollection, IServiceCollection>>();
 
-    [Fact]
-    public void False() =>
         new ServiceCollection()
-            .If(false, s => s.AddSingleton<Ext>())
-            .BuildServiceProvider()
-            .GetService<Ext>()
-            .Should()
-            .BeNull();
+            .If(@if, then)
+            .BuildServiceProvider();
+        
+        then.Received(received).Invoke(Arg.Any<IServiceCollection>());
+    }
+    
+    [Theory]
+    [InlineData(true, 1, 0)]
+    [InlineData(false, 0, 1)]
 
-    [Fact]
-    public void Else() =>
+    public void IfThenElse(bool @if, int a, int b)
+    {
+        var then = Substitute.For<Func<IServiceCollection, IServiceCollection>>();
+        var @else = Substitute.For<Func<IServiceCollection, IServiceCollection>>();
+
         new ServiceCollection()
-            .If(false,
-                s => s.AddSingleton<List<int>>(),
-                s => s.AddSingleton<Ext>())
-            .BuildServiceProvider()
-            .GetService<Ext>()
-            .Should()
-            .NotBeNull();
+            .If(@if, then, @else)
+            .BuildServiceProvider();
+        
+        then.Received(a).Invoke(Arg.Any<IServiceCollection>());
+        @else.Received(b).Invoke(Arg.Any<IServiceCollection>());
+    }
 }
