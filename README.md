@@ -1,5 +1,7 @@
 # Iffy
 
+[![nuget](https://img.shields.io/nuget/v/Iffy.svg)](https://www.nuget.org/packages/Iffy/)
+
 The one extension method you never knew you needed it that much: 
 
 > iffy, if-as-a-method
@@ -44,7 +46,7 @@ new ServiceCollection()
     .BuildServiceProvider()
 ```
 
-## any other builder
+## with any other builder
 
 ```csharp
 new ServiceCollection()
