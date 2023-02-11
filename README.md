@@ -36,6 +36,18 @@ new ServiceCollection()
     .BuildServiceProvider()
 ```
 
+or:
+
+```csharp
+new ServiceCollection()
+    .If(IsDevelopment())
+    .Then(s => s.AddSingleton<...>()) 
+    .Else(_ => _)
+    .BuildServiceProvider()
+```
+
+for when the `.Else()` method is not available (due to different input/output types).
+
 ## if().then().else()
 
 ```csharp
@@ -46,7 +58,7 @@ new ServiceCollection()
     .BuildServiceProvider()
 ```
 
-## with any other builder
+## and with any other builder
 
 ```csharp
 new ServiceCollection()
