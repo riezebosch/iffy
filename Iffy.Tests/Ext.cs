@@ -15,7 +15,7 @@ public class Ext
             .If(@if, then)
             .BuildServiceProvider();
         
-        then.Received(received).Invoke(Arg.Any<IServiceCollection>());
+        then.Received(received)(Arg.Any<IServiceCollection>());
     }
     
     [Theory]
@@ -31,7 +31,7 @@ public class Ext
             .If(@if, then, @else)
             .BuildServiceProvider();
         
-        then.Received(a).Invoke(Arg.Any<IServiceCollection>());
-        @else.Received(b).Invoke(Arg.Any<IServiceCollection>());
+        then.Received(a)(Arg.Any<IServiceCollection>());
+        @else.Received(b)(Arg.Any<IServiceCollection>());
     }
 }

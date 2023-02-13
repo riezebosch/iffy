@@ -18,7 +18,7 @@ public class Builder
             .Else()
             .BuildServiceProvider();
         
-        then.Received(received).Invoke(Arg.Any<IServiceCollection>());
+        then.Received(received)(Arg.Any<IServiceCollection>());
     }
 
     [Theory]
@@ -36,7 +36,7 @@ public class Builder
             .Else(@else)
             .BuildServiceProvider();
         
-        then.Received(then_received).Invoke(Arg.Any<IServiceCollection>());
-        @else.Received(else_received).Invoke(Arg.Any<IServiceCollection>());
+        then.Received(then_received)(Arg.Any<IServiceCollection>());
+        @else.Received(else_received)(Arg.Any<IServiceCollection>());
     }
 }
