@@ -108,3 +108,28 @@ new ServiceCollection()
                 .DoNotCreateQueues()
                 .DoNotCheckQueueConfiguration())));
 ```
+
+## benchmark
+
+``` ini
+
+BenchmarkDotNet=v0.13.4, OS=macOS 13.1 (22C65) [Darwin 22.2.0]
+Apple M1, 1 CPU, 8 logical and 8 physical cores
+.NET SDK=6.0.405
+  [Host]     : .NET 6.0.13 (6.0.1322.58009), Arm64 RyuJIT AdvSIMD
+  Job-DYHKDS : .NET 6.0.13 (6.0.1322.58009), Arm64 RyuJIT AdvSIMD
+
+InvocationCount=1000000  IterationCount=5  LaunchCount=1  
+WarmupCount=3  
+
+```
+|     Method |     Mean |    Error |    StdDev |
+|----------- |---------:|---------:|----------:|
+|       None | 3.713 μs | 4.506 μs | 1.1703 μs |
+|     Normal | 3.855 μs | 3.679 μs | 0.9555 μs |
+|     IfThen | 4.003 μs | 5.244 μs | 1.3618 μs |
+| IfThenElse | 3.958 μs | 4.304 μs | 1.1178 μs |
+|         If | 3.970 μs | 4.232 μs | 1.0991 μs |
+|    Builder | 3.751 μs | 4.092 μs | 1.0628 μs |
+
+See for yourselves in [Iffy.Benchmark](Iffy.Benchmark).
