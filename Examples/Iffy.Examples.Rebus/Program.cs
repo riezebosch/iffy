@@ -8,10 +8,15 @@ builder.Services
         .Transport(t => t.UseAzureServiceBus("", "", new DefaultAzureCredential())
             .AutomaticallyRenewPeekLock()
             .SetDuplicateDetectionHistoryTimeWindow(new TimeSpan(0, 2, 0))
-            .If(!builder.Environment.IsDevelopment(), settings => settings
+            .If(builder.Environment.IsDevelopment()
+                ? s => s.SetAutoDeleteOnIdle(TimeSpan.FromMinutes(5))
+                : s => s
+                    .DoNotCreateQueues()
+                    .DoNotCheckQueueConfiguration())
+            .If(!builder.Environment.IsDevelopment(), then => then
                 .DoNotCreateQueues()
                 .DoNotCheckQueueConfiguration())
-            .If(builder.Environment.IsDevelopment(),
+            .If(builder.Environment.IsDevelopment(), 
                 then => then
                     .SetAutoDeleteOnIdle(TimeSpan.FromMinutes(5)),
                 @else => @else
