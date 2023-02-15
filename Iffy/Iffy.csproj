@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard1.0</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>10.0</LangVersion>
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -11,13 +11,12 @@
         <NeutralLanguage>en-US</NeutralLanguage>
         <PackageId>Iffy</PackageId>
         <Description>If extension method.</Description>
-        <PackageReleaseNotes></PackageReleaseNotes>
+        <PackageReleaseNotes>target netstandard2.0</PackageReleaseNotes>
         <PackageTags>if;condition;extension;builder;servicecollection;configuration</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/riezebosch/iffy.git</RepositoryUrl>
-        <Version>1.5.$(VersionSuffix)</Version>
     </PropertyGroup>
 
     <ItemGroup>
