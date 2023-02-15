@@ -1,6 +1,7 @@
 # Iffy
 
 [![nuget](https://img.shields.io/nuget/v/Iffy.svg)](https://www.nuget.org/packages/Iffy/)
+[![stryker](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Friezebosch%2Fiffy%2Fmain&label=stryker)](https://dashboard.stryker-mutator.io/reports/github.com/riezebosch/iffy/main)
 
 The one extension method you never knew you needed it that much: 
 
