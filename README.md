@@ -42,8 +42,6 @@ new ServiceCollection()
     .BuildServiceProvider()
 ```
 
-> ⚠️ You _must_ close the builder with an `.Else([action])`, otherwise it will not be executed!
-
 or:
 
 ```csharp
@@ -54,7 +52,7 @@ new ServiceCollection()
     .BuildServiceProvider()
 ```
 
-for when the `.Else()` method is not available (due to different input/output types).
+**Update:** the `.Then(action)` is from now on still executed even when you omit the `.Else([action])`. For sure your method chain then stops there.
 
 ## if().then().else()
 
@@ -65,8 +63,6 @@ new ServiceCollection()
     .Else(s => s.AddSingleton<...>())
     .BuildServiceProvider()
 ```
-
-> ⚠️ You _must_ close the builder with an `.Else([action])`, otherwise it will not be executed!
 
 ## if ?:
 

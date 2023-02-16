@@ -11,8 +11,11 @@ public class If<TIn>
         _if = @if;
     }
 
-    public Then<TIn, TOut> Then<TOut>(Func<TIn, TOut> then) =>
-        new(_in, _if, then);
-    public Then<TIn> Then(Func<TIn, TIn> then) => 
-        new(_in, _if, then);
+    public Then<TIn, TOut> Then<TOut>(Func<TIn, TOut> then) => 
+        _if ? new Value<TIn, TOut>(then(_in)) 
+            : new Else<TIn, TOut>(_in);
+
+    public Then<TIn> Then(Func<TIn, TIn> then) =>
+        _if ? new Value<TIn>(then(_in))
+            : new Else<TIn>(_in);
 }

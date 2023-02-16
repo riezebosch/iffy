@@ -39,4 +39,39 @@ public class Builder
         then.Received(then_received)(Arg.Any<IServiceCollection>());
         @else.Received(else_received)(Arg.Any<IServiceCollection>());
     }
+    
+    [Theory]
+    [InlineData(true, 1, 0)]
+    [InlineData(false, 0, 1)]
+
+    public void IfThenElseSame(bool @if, int then_received, int else_received)
+    {
+        var then = Substitute.For<Func<IServiceCollection, IServiceCollection>>();
+        var @else = Substitute.For<Func<IServiceCollection, IServiceCollection>>();
+        
+        new ServiceCollection()
+            .As<IServiceCollection>()
+            .If(@if)
+            .Then(then)
+            .Else(@else)
+            .BuildServiceProvider();
+        
+        then.Received(then_received)(Arg.Any<IServiceCollection>());
+        @else.Received(else_received)(Arg.Any<IServiceCollection>());
+    }
+    
+    [Theory]
+    [InlineData(true, 1)]
+    [InlineData(false, 0)]
+
+    public void IfThenNoElse(bool @if, int then_received)
+    {
+        var then = Substitute.For<Func<IServiceCollection, IServiceCollection>>();
+
+        new ServiceCollection()
+            .If(@if)
+            .Then(then);
+        
+        then.Received(then_received)(Arg.Any<IServiceCollection>());
+    }
 }

@@ -11,7 +11,7 @@
         <NeutralLanguage>en-US</NeutralLanguage>
         <PackageId>Iffy</PackageId>
         <Description>If extension method.</Description>
-        <PackageReleaseNotes>target netstandard2.0</PackageReleaseNotes>
+        <PackageReleaseNotes>target netstandard2.0; rebuild the builder</PackageReleaseNotes>
         <PackageTags>if;condition;extension;builder;servicecollection;configuration</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <PackageReadmeFile>README.md</PackageReadmeFile>
