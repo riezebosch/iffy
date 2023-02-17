@@ -1,4 +1,4 @@
-namespace Iffy;
+namespace Iffy.Builder;
 
 public interface Then<out TIn, TOut>
 {

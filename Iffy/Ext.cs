@@ -1,9 +1,11 @@
-﻿namespace Iffy;
+﻿using Iffy.Builder;
+
+namespace Iffy;
 
 public static class Ext
 {
     public static If<TIn> If<TIn>(this TIn @in, bool @if) => 
-        new (@in, @if);
+        new(@in, @if);
     public static T If<T>(this T @in, Action<T> with)
     {
         with(@in);

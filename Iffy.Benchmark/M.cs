@@ -42,7 +42,8 @@ public class M
     [Benchmark]
     public Data IfThenElse() =>
         new ServiceCollection()
-            .If(@if, then => then.AddSingleton(_data), @else => @else)
+            .If(!@if, then => then, 
+                @else => @else.AddSingleton(_data))
             .BuildServiceProvider()
             .GetRequiredService<Data>();
 
@@ -61,6 +62,15 @@ public class M
             .If(@if)
             .Then(s => s.AddSingleton(_data))
             .Else(_ => _)
+            .BuildServiceProvider()
+            .GetRequiredService<Data>();
+    
+    [Benchmark]
+    public Data BuilderElse() =>
+        new ServiceCollection()
+            .If(!@if)
+            .Then(_ => (IServiceCollection)_)
+            .Else(s => s.AddSingleton(_data))
             .BuildServiceProvider()
             .GetRequiredService<Data>();
 }

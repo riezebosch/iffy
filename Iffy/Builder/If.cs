@@ -1,4 +1,4 @@
-namespace Iffy;
+namespace Iffy.Builder;
 
 public class If<TIn>
 {
@@ -12,10 +12,10 @@ public class If<TIn>
     }
 
     public Then<TIn, TOut> Then<TOut>(Func<TIn, TOut> then) => 
-        _if ? new Value<TIn, TOut>(then(_in)) 
-            : new Else<TIn, TOut>(_in);
+        _if ? new True<TIn, TOut>(then(_in)) 
+            : new False<TIn, TOut>(_in);
 
     public Then<TIn> Then(Func<TIn, TIn> then) =>
-        _if ? new Value<TIn>(then(_in))
-            : new Else<TIn>(_in);
+        _if ? new True<TIn>(then(_in))
+            : new False<TIn>(_in);
 }
